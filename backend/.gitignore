@@ -1,0 +1,41 @@
+# Dependências
+/node_modules
+/dist
+/build
+
+# Arquivos de ambiente (contêm credenciais)
+.env
+.env.*
+!.env.example
+
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Arquivos de teste
+/coverage
+/.nyc_output
+
+# Arquivos temporários e de compilação
+/dist
+/tmp
+/out-tsc
+/build
+
+# Arquivos específicos do MongoDB local
+/data/db
+/dump
+
+# TypeScript
+*.js
+*.js.map
+!jest.config.js
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
