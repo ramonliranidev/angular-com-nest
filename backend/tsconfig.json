@@ -17,6 +17,14 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "strict": true
+    "strict": true,
+    "paths": {
+      "@env": ["src/config/environment"],
+      "@core/*": ["src/core/*"],
+      "@use-cases/*": ["src/use-cases/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@prisma/*": ["src/frameworks/database/prisma/*"],
+      "@auth-decorators/*": ["src/frameworks/auth/decorators/*"]
+    }
   }
 }

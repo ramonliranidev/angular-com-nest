@@ -1,11 +1,9 @@
-import dotenv from 'dotenv';
-import path from 'path';
+import * as dotenv from 'dotenv';
+import * as path from 'path';
 import { z } from 'zod';
 
-const ENV = process.env.NODE_ENV;
-
 dotenv.config({
-  path: path.resolve(process.cwd(), !ENV ? '.env' : `.env.${ENV}`),
+  path: path.resolve(process.cwd(), `.env.${process.env.NODE_ENV || 'dev'}`),
 });
 
 const envSchema = z.object({
@@ -19,12 +17,11 @@ const envSchema = z.object({
   FRONTEND_URL: z.string(),
 });
 
-const _env = envSchema.safeParse(process.env);
+const parsedEnv = envSchema.safeParse(process.env);
 
-if (_env.success === false) {
-  console.error('❌ Invalid environment variables', _env.error.format());
-
+if (!parsedEnv.success) {
+  console.error('❌ Invalid environment variables:', parsedEnv.error.format());
   throw new Error('Invalid environment variables.');
 }
 
-export const env = _env.data;
+export const env = parsedEnv.data;
